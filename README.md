@@ -1,6 +1,6 @@
-# Number Theory: Subtraction
+# Lab 11 - Counters and Dividers
 
-In this lab you've learned the basics of number theory as it relates to subtraction.
+In this lab, we learned how to make clock dividers from two types of counters.
 
 ## Rubric
 
@@ -13,9 +13,9 @@ In this lab you've learned the basics of number theory as it relates to subtract
 
 ## Lab Questions
 
-### 1 - Explain the differences between our Half Adder from last lab and the Half Subtractor from this lab.
+### 1 - Why does the Modulo Counter actually divide clocks by 2 * Count?
 
-### 2 - What about the end around carry of One’s Complement makes it hard to use and implement?
+### 2 - Why does the ring counter's output go to all 1s on the first clock cycle?
 
-### 3 - What is the edge case and problem with Two’s Complement number representation?
+### 3 - What width of ring counter would you use to get to an output of ~1KHz?
 
