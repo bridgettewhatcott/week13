@@ -5,19 +5,22 @@ module top(
     input btnU, //reset
     output [2:0] current_state
 );
-//here is where you would hook up your ripple and modulo to the leds and buttons
-//make sure that there is an endmodule after which should not be an error when you put the other stuff in
-//modules
 
+endmodule
+//here is where you would hook up your ripple and modulo to the leds and buttons
 //Ripple Segment
 //put these in a module called ripple or something
+module ripple(
+    input T,store,reset,btnU,
+    output Q
+);
 wire [2:0] Next;
 
 tff zero(
     .T(1),
     .store(clk),
     .Q(Next[0]),
-    .Q(led[0]), //wire to logic or basic outputs not leds yet!
+   // .Q(led[0]), //wire to logic or basic outputs not leds yet!
 //  .led(Next[0]),
     .reset(btnU)
 );
@@ -26,7 +29,7 @@ tff one(
     .T(1),
     .store(Next[0]),
     .Q(Next[1]),
-    .led(Next[1]),
+   // .led(Next[1]),
     .reset(btnU) //wire to logic or basic outputs not leds yet!
 );
 
@@ -34,13 +37,18 @@ tff two(
     .T(1),
     .store(Next[1]),
     .Q(Next[2]),
-    .led(Next[2]),
+  //  .led(Next[2]),
     .reset(btnU) //wire to logic or basic outputs not leds yet!
 );
 
+endmodule
 
 //Modulo Segment
 //put these in a module called moduluo or something
+module modulo(
+    input A,B,cin,D,store,reset,
+    output Y,cout,Q
+);
 wire [2:0] Next;
 wire [2:0] TTN;
 wire [2:0] Qmove;
@@ -59,7 +67,7 @@ dff dZero(
     .D(Next[0]), 
     .store(clk),
     .Q(Qmove[0]),
-    .led(current_state[0]),
+    //.led(current_state[0]),
     .reset(btnU)
 );
 
@@ -75,7 +83,7 @@ dff done(
     .D(Next[1]),
     .store(clk),
     .Q(Qmove[1]),
-    .led(current_state[1]),
+   // .led(current_state[1]),
     .reset(btnU)
 );
 
@@ -91,7 +99,7 @@ dff dtwo(
     .D(Next[2]),
     .store(clk),
     .Q(Qmove[2]),
-    .led(current_state[2]),
+  //  .led(current_state[2]),
     .reset(btnU)
 );
 
